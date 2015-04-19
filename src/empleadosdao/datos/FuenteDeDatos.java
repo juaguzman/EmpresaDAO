@@ -27,7 +27,7 @@ public class FuenteDeDatos
    public FuenteDeDatos()
    {
        badeDeDatos="Empresa";
-       clave="";
+       clave="mysql";
        usuario="root";
        url="jdbc:mysql://localhost/"+badeDeDatos;
    }

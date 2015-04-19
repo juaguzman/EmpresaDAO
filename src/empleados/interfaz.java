@@ -3,6 +3,7 @@ package empleados;
 import empleadosdao.clases.Empleado;
  import empleados.EmpleadosDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -45,12 +46,25 @@ public class interfaz extends javax.swing.JFrame {
         jTxtEdad = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jtxtModNom = new javax.swing.JTextField();
+        jTxtModEda = new javax.swing.JTextField();
+        btnmod2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(460, 310));
 
         list.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listMouseClicked(evt);
+            }
+        });
+        list.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listActionPerformed(evt);
             }
         });
 
@@ -77,6 +91,37 @@ public class interfaz extends javax.swing.JFrame {
             }
         });
 
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Modificar");
+
+        jLabel5.setText("Nombre");
+
+        jLabel6.setText("Edad");
+
+        jtxtModNom.setEnabled(false);
+
+        jTxtModEda.setEnabled(false);
+        jTxtModEda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtModEdaActionPerformed(evt);
+            }
+        });
+
+        btnmod2.setText("Aceptar");
+        btnmod2.setEnabled(false);
+        btnmod2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmod2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,78 +131,119 @@ public class interfaz extends javax.swing.JFrame {
                 .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(127, 127, 127))
+                            .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
+                                .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(151, 151, 151))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jTxtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(151, 151, 151))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTxtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnAgregar)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btnModificar)
+                                    .addComponent(btnAgregar))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminar)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEliminar)
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxtModNom, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTxtModEda, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnmod2)))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(list, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Nombre)
-                                    .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(50, 50, 50)
-                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Nombre)
+                                .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jTxtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAgregar))
                         .addGap(29, 29, 29)
-                        .addComponent(btnEliminar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnModificar))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel4)
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jtxtModNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTxtModEda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnmod2))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       int d = 0;
+       
         String nombre = jtxtNombre.getText();
         int eda = Integer.parseInt(jTxtEdad.getText());
         EmpleadosDAO e = new EmpleadosDAO();
+        d = JOptionPane.showConfirmDialog(null,"desea agragar al empleado: "+ nombre, "agregar", WIDTH);
+        if(d==0)
+        {
         e.agregarEmpleado(nombre, eda);
         actualizarList();
+        jtxtNombre.setText("");
+        jTxtEdad.setText("");
+        }
+        else
+        {
+        actualizarList();
+        jtxtNombre.setText("");
+        jTxtEdad.setText("");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
       btnEliminar.setEnabled(true);
+      btnModificar.setEnabled(true);
     }//GEN-LAST:event_listMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -169,16 +255,53 @@ public class interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listActionPerformed
+        // TODO add your handling code here:
+       
+         btnEliminar.setEnabled(true);
+         btnModificar.setEnabled(true);        
+      
+    }//GEN-LAST:event_listActionPerformed
+
+    private void jTxtModEdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtModEdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtModEdaActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+         int num =0;
+        num = list.getSelectedIndex();        
+        Empleado mi = (Empleado) lis.get(num); 
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        jtxtModNom.setEnabled(true);
+        jtxtModNom.setText(mi.getNombre());
+        jTxtModEda.setEnabled(true);       
+        jTxtModEda.setText(String.valueOf(mi.getEdad()));
+        btnmod2.setEnabled(true);
+        
+               
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnmod2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmod2ActionPerformed
+        // TODO add your handling code here:
+         int num =0;
+        num = list.getSelectedIndex();        
+        Empleado mi = (Empleado) lis.get(num);       
+        modificar(mi);
+    }//GEN-LAST:event_btnmod2ActionPerformed
+
     public void mostrarDatos()
     {
         EmpleadosDAO e = new EmpleadosDAO();
         lis = e.listar();       
         
+        list.add("Nombre   /   Edad");
         for(int i =0;i<lis.size();i++)
         {
             empleado = (Empleado) lis.get(i);  
-            String emple = "Nombre: "+empleado.getNombre()+ " Edad: "+empleado.getEdad();
-            System.out.println("Nombre: "+empleado.getNombre()+ " Edad: "+empleado.getEdad());
+            String emple = "Nombre: "+empleado.getNombre()+ " / Edad: "+empleado.getEdad();
+          
             list.add(emple);
         } 
         
@@ -187,16 +310,55 @@ public class interfaz extends javax.swing.JFrame {
      public void actualizarList()
        {  list.removeAll();
            mostrarDatos();
-       }
+           btnEliminar.setEnabled(false);
+           btnModificar.setEnabled(false);
+            jtxtModNom.setEnabled(false);
+            jtxtModNom.setText("");
+            jTxtModEda.setEnabled(false);       
+            jTxtModEda.setText("");
+            btnmod2.setEnabled(false);
+
+        }
      
     public void borrar(Empleado empl)
-    {      
+    {   boolean si = false;
+       int d = JOptionPane.showConfirmDialog(null,"deseda elminar al empleado " + empl.getNombre(), "Eliminar", WIDTH);
+       if(d==0)
+       {
        Empleado mi = empl;
       int id= empl.getIdEmpleado();
       EmpleadosDAO e = new EmpleadosDAO();
         e.eliminar(id);
         actualizarList();
+       
+       }
+       else
+       {
+       actualizarList();
+       
       
+       }
+    }
+    
+    public void modificar(Empleado empl)
+    {
+         boolean si = false;
+       int d = JOptionPane.showConfirmDialog(null,"deseda modificar al empleado: " + empl.getNombre()+ " de edad: " + empl.getEdad() + " por: " + jtxtModNom.getText()+"de edad: " + jTxtModEda.getText() , "Modificar", WIDTH);
+       if(d==0)
+       {
+       Empleado mi = empl;
+      int id= empl.getIdEmpleado();
+      EmpleadosDAO e = new EmpleadosDAO();
+       empl.setNombre(jtxtModNom.getText());
+       empl.setEdad(Integer.parseInt(jTxtModEda.getText()));
+       e.modificar(empl);        
+        actualizarList();
+       }
+       else
+       {
+       actualizarList();
+       
+        }
     }
     
     /**
@@ -240,11 +402,18 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnmod2;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTxtEdad;
+    private javax.swing.JTextField jTxtModEda;
+    private javax.swing.JTextField jtxtModNom;
     private javax.swing.JTextField jtxtNombre;
     private java.awt.List list;
     // End of variables declaration//GEN-END:variables

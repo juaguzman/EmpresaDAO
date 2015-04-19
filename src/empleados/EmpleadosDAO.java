@@ -43,6 +43,11 @@ public class EmpleadosDAO
        
         e.eliminarEmpleado(id);
     }
+    
+    public void modificar(Empleado empl)
+    {
+        e.actualizarEmpleado(empl);
+    }
 
     public static void main(String[] args)
     {
