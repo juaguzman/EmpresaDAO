@@ -22,11 +22,7 @@ public class EmpleadosDAO
         
         Empleado empleado = null;
         List empleados = e.obtenerEmpleados();
-        for(int i =0;i<empleados.size();i++)
-        {
-            empleado = (Empleado) empleados.get(i);           
-            System.out.println("Nombre: "+empleado.getNombre()+ " Edad: "+empleado.getEdad());
-        } 
+     
         
         return empleados;
 }
@@ -55,15 +51,6 @@ public class EmpleadosDAO
         EmpleadoDAO e = new EmpleadoDAO();
         f.setVisible(true);
         f.mostrarDatos();
-        
-        
-        Empleado empleado = null;
-        List empleados = e.obtenerEmpleados();
-        for(int i =0;i<empleados.size();i++)
-        {
-            empleado = (Empleado) empleados.get(i);
-            System.out.println("Nombre: "+empleado.getNombre()+ " Edad: "+empleado.getEdad());
-        }
     }
     
 }
