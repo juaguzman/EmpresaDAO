@@ -296,11 +296,11 @@ public class interfaz extends javax.swing.JFrame {
         EmpleadosDAO e = new EmpleadosDAO();
         lis = e.listar();       
         
-        list.add("Nombre   /   Edad");
+       
         for(int i =0;i<lis.size();i++)
         {
             empleado = (Empleado) lis.get(i);  
-            String emple = "Nombre: "+empleado.getNombre()+ " / Edad: "+empleado.getEdad();
+            String emple = "Nombre: "+empleado.getNombre()+ "  Edad: "+empleado.getEdad();
           
             list.add(emple);
         } 
